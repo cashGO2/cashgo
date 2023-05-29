@@ -1,103 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Log In</title>
-        <style>
-            body {
-                font-family: Century Gothic, Indie Flower;
-                background-color: #f5f5f5;
-                margin: 0;
-                padding: 0;
-            }
-
-            .header {
-            background-color: #333333;
-            padding: 20px;
-            text-align: center;
-            color: #ffffff;
-        }
-
-            .container {
-                max-width: 400px;
-                margin: 100px auto;
-                padding: 40px;
-                background-color: #ffffff;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            h1 {
-                font-size: 28px;
-                margin: 0 0 20px 0;
-                text-align: center;
-            }
-
-            input[type="text"],
-            input[type="password"] {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 20px;
-                border-radius: 5px;
-                border: 1px solid #cccccc;
-            }
-
-            .button {
-                display: inline-block;
-                padding: 10px 20px;
-                font-size: 15px;
-                text-align: center;
-                text-decoration: none;
-                background-color: #ff6600;
-                color: #ffffff;
-                border-radius: 5px;
-                transition: background-color 0.3s ease;
-            }
-
-            .button:hover {
-                background-color: #ff3300;
-            }
-
-            .footer {
-                background-color: #333333;
-            padding: 20px;
-            text-align: center;
-            color: #ffffff;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="header">
-            <h1>cashGO</h1>
-        </div>
-
-        <div class="container">
-            <h1>Log In</h1>
-           <form id="loginForm" onsubmit="return login()">
-        <input type="text" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <input type="text" id="mobileNumber" placeholder="Mobile Number">
-        <button class="button" type="submit">Log In</button>
-        </form>
-        </div>
-
-        <script>
-            function login() {
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                const mobileNumber = document.getElementById("mobileNumber").value;
-
-                //Validate email, password, and/or mobile number
-                if (email == "jinansh2005@gmail.com" && password === "admin@jtc.com") {
-                    // Redirect to home page
-                    window.location.href = "home.html";
-                } else if (mobileNumber ==="9409741922" && password === "admin@jtc.com") {
-                    //Redirect to home page
-                    window.location.href = "home.html";
-                } else {
-                    alert("Invalid credentials. Please try again.");
-                }
-
-                return false; // Prevent form submission
-            }
-        </script>
-    </body>
+<head>
+  <title>Log In</title>
+  <style>
+    /* Add your custom styles for the log in page */
+    body {
+      font-family: "Helvetica", sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 40px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #cccccc;
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #ff6600;
+      color: #ffffff;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .button:hover {
+      background-color: #ff3300;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Log In</h1>
+    <form id="loginForm" onsubmit="return login()">
+      <input type="text" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <input type="text" id="mobileNumber" placeholder="Mobile Number">
+      <button class="button" type="submit">Log In</button>
+    </form>
+  </div>
+  
+  <script>
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const mobileNumber = document.getElementById("mobileNumber").value;
+      
+      // Validate email, password, and/or mobile number
+      if (email === "jinansh2005@gmail.com" && password === "admin@itc.com") {
+        // Set the loggedIn key to true
+        localStorage.setItem("loggedIn", "true");
+        // Redirect to home page
+        window.location.href = "home.html";
+      } else if (mobileNumber === "9409741922" && password === "admin@itc.com") {
+        // Set the loggedIn key to true
+        localStorage.setItem("loggedIn", "true");
+        // Redirect to home page
+        window.location.href = "home.html";
+      } else {
+        alert("Invalid credentials. Please try again.");
+      }
+      
+      return false; // Prevent form submission
+    }
+  </script>
+</body>
 </html>
