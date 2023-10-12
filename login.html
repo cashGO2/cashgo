@@ -62,29 +62,31 @@
     </form>
   </div>
   
-  <script>
-    function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const mobileNumber = document.getElementById("mobileNumber").value;
-      
-      // Validate email, password, and/or mobile number
-      if (email === "jinansh2005@gmail.com" && password === "admin@itc.com") {
-        // Set the loggedIn key to true
-        localStorage.setItem("loggedIn", "true");
-        // Redirect to home page
-        window.location.href = "home.html";
-      } else if (mobileNumber === "9409741922" && password === "admin@itc.com") {
-        // Set the loggedIn key to true
-        localStorage.setItem("loggedIn", "true");
-        // Redirect to home page
-        window.location.href = "home.html";
-      } else {
-        alert("Invalid credentials. Please try again.");
-      }
-      
-      return false; // Prevent form submission
-    }
+ <script>
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("usernameInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            // Check credentials against the local database
+            const db = openDatabase('local_db', '1.0', 'Local Database', 2 * 1024 * 1024);
+
+            db.transaction(function (tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS users (id unique, email, password)');
+                tx.executeSql('SELECT * FROM users WHERE email = ? AND password = ?', [username, password], function (tx, results) {
+                    if (results.rows.length > 0) {
+                        alert("Logged in successfully!");
+                        // Redirect to the home page or desired destination
+                        window.location.href = "home.html";
+                    } else {
+                        alert("Invalid username or password. Please try again.");
+                    }
+                });
+            });
+        });
   </script>
 </body>
 </html>
