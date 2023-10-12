@@ -54,6 +54,30 @@
                         <input type="tel" name="mobile" placeholder="Mobile Number" required>
                         <button class="button" type="submit">Sign In</button>
                         </form>
+
+                    <script>
+        const createAccountForm = document.getElementById("createAccountForm");
+
+        createAccountForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("emailInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            // Store the credentials in the local database
+            const db = openDatabase('local_db', '1.0', 'Local Database', 2 * 1024 * 1024);
+            
+            db.transaction(function (tx) {
+                tx.executeSql('CREATE TABLE IF NOT EXISTS users (id unique, email, password)');
+                tx.executeSql('INSERT INTO users (email, password) VALUES (?, ?)', [email, password]);
+            });
+
+            alert("Account created successfully!");
+
+            // Redirect to the login page
+            window.location.href = "login.html";
+        });
+                    </script>
                 </div>
             </body>
 </html>
