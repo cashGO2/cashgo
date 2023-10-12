@@ -71,7 +71,7 @@
             const username = document.getElementById("usernameInput").value;
             const password = document.getElementById("passwordInput").value;
 
-            // Check credentials against the local database
+            // Verify credentials against the local database
             const db = openDatabase('local_db', '1.0', 'Local Database', 2 * 1024 * 1024);
 
             db.transaction(function (tx) {
@@ -87,6 +87,6 @@
                 });
             });
         });
-  </script>
+    </script>
 </body>
 </html>
