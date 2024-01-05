@@ -1,3 +1,3 @@
 # cashGO
 The Official Website of cashGO by JTC 
-URL: cashgo2.github.io/cashgo
+URL: https://cashgo2.github.io/cashgo
